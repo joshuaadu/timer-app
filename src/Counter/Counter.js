@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./Counter.css";
-const Counter = (props) => {
+const Counter = ({ addTotal, ...props }) => {
   // Set States to manage counter variables
   // Check if counter is running or stopped
   const [isCounting, setIsCounting] = useState();
@@ -14,6 +14,7 @@ const Counter = (props) => {
     if (isCounting) {
       interval = setInterval(() => {
         setNumber((seconds) => seconds + 1);
+        addTotal();
       }, 1000);
     }
     // Clear timer when counter is paused or stopped
